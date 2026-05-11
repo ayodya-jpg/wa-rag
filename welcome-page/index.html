@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome Page Toko Shopee</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #fff7ed, #ffe4e6);
+      color: #2d2d2d;
+      min-height: 100vh;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 0;
+    }
+
+    .hero {
+      text-align: center;
+      padding: 50px 20px;
+      background: white;
+      border-radius: 24px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      margin-bottom: 35px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      color: #e11d48;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #555;
+      max-width: 700px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .section-title h2 {
+      font-size: 30px;
+      color: #2d2d2d;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #666;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+    }
+
+    .card h3 {
+      color: #e11d48;
+      margin-bottom: 12px;
+      font-size: 21px;
+    }
+
+    .card p {
+      color: #555;
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .btn-wa {
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+      text-decoration: none;
+      background: #25D366;
+      color: white;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .btn-wa:hover {
+      background: #1ebe5d;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #666;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <div class="hero">
+      <h1>Selamat Datang di Toko Parfum Kami</h1>
+      <p>
+        Temukan berbagai produk pilihan dari toko Shopee kami.
+        Silakan pilih kategori produk yang ingin ditanyakan, lalu klik tombol WhatsApp
+        untuk terhubung langsung dengan chatbot sesuai kategori.
+      </p>
+    </div>
+
+    <div class="section-title">
+      <h2>Kategori Produk</h2>
+      <p>Pilih kategori produk yang ingin kamu cari</p>
+    </div>
+
+    <div class="category-grid">
+
+      <div class="card">
+        <h3>Parfum Wanita</h3>
+        <p>
+          Kategori produk parfum wanita dengan berbagai pilihan aroma yang cocok untuk aktivitas harian.
+        </p>
+        <a 
+          class="btn-wa" 
+          href="https://wa.me/628133324962?text=Halo%20saya%20ingin%20bertanya%20tentang%20kategori%20Parfum%20Wanita"
+          target="_blank">
+          Chat WhatsApp
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>Parfum Pria</h3>
+        <p>
+          Kategori produk parfum pria dengan aroma maskulin, fresh, dan cocok digunakan sehari-hari.
+        </p>
+        <a 
+          class="btn-wa" 
+          href="https://wa.me/628133324962?text=Halo%20saya%20ingin%20bertanya%20tentang%20kategori%20Parfum%20Pria"
+          target="_blank">
+          Chat WhatsApp
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>Body Mist</h3>
+        <p>
+          Kategori body mist dengan aroma ringan dan segar untuk penggunaan santai maupun harian.
+        </p>
+        <a 
+          class="btn-wa" 
+          href="https://wa.me/628133324962?text=Halo%20saya%20ingin%20bertanya%20tentang%20kategori%20Body%20Mist"
+          target="_blank">
+          Chat WhatsApp
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>Skincare</h3>
+        <p>
+          Kategori produk perawatan kulit yang dapat membantu menunjang kebutuhan perawatan harian.
+        </p>
+        <a 
+          class="btn-wa" 
+          href="https://wa.me/628133324962?text=Halo%20saya%20ingin%20bertanya%20tentang%20kategori%20Skincare"
+          target="_blank">
+          Chat WhatsApp
+        </a>
+      </div>
+
+      <div class="card">
+        <h3>Hair Care</h3>
+        <p>
+          Kategori produk perawatan rambut untuk menjaga rambut tetap sehat, bersih, dan wangi.
+        </p>
+        <a 
+          class="btn-wa" 
+          href="https://wa.me/628133324962?text=Halo%20saya%20ingin%20bertanya%20tentang%20kategori%20Hair%20Care"
+          target="_blank">
+          Chat WhatsApp
+        </a>
+      </div>
+
+    </div>
+
+    <div class="footer">
+      <p>© 2026 Welcome Page Chatbot WhatsApp Berbasis RAG</p>
+    </div>
+
+  </div>
+</body>
+</html>
