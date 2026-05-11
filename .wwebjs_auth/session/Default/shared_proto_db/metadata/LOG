@@ -1,0 +1,4 @@
+2026/05/11-21:22:19.697 555c Creating DB S:\Kuliah\Semester 6\Kecerdasan AI\prak2\chatbot-wa-rag\.wwebjs_auth\session\Default\shared_proto_db\metadata since it was missing.
+2026/05/11-21:22:19.712 555c Reusing MANIFEST S:\Kuliah\Semester 6\Kecerdasan AI\prak2\chatbot-wa-rag\.wwebjs_auth\session\Default\shared_proto_db\metadata/MANIFEST-000001
+2026/05/11-21:22:19.713 555c Recovering log #3
+2026/05/11-21:22:19.713 555c Reusing old log S:\Kuliah\Semester 6\Kecerdasan AI\prak2\chatbot-wa-rag\.wwebjs_auth\session\Default\shared_proto_db\metadata/000003.log 

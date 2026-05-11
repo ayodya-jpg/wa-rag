@@ -1,0 +1,5 @@
+2026/05/11-21:22:19.617 5484 Creating DB S:\Kuliah\Semester 6\Kecerdasan AI\prak2\chatbot-wa-rag\.wwebjs_auth\session\Default\Local Storage\leveldb since it was missing.
+2026/05/11-21:22:19.643 5484 Reusing MANIFEST S:\Kuliah\Semester 6\Kecerdasan AI\prak2\chatbot-wa-rag\.wwebjs_auth\session\Default\Local Storage\leveldb/MANIFEST-000001
+2026/05/11-21:22:19.645 5484 Recovering log #4
+2026/05/11-21:22:19.648 5484 Reusing old log S:\Kuliah\Semester 6\Kecerdasan AI\prak2\chatbot-wa-rag\.wwebjs_auth\session\Default\Local Storage\leveldb/000004.log 
+2026/05/11-21:22:19.650 5484 Delete type=2 #5

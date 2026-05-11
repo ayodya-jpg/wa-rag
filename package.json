@@ -1,0 +1,31 @@
+{
+  "name": "chatbot-wa-rag",
+  "version": "1.0.0",
+  "description": "Chatbot WhatsApp berbasis RAG menggunakan Groq dan dataset Shopee",
+  "main": "server-v2.js",
+  "scripts": {
+    "start": "node server-v2.js",
+    "dev": "nodemon server-v2.js"
+  },
+  "keywords": [
+    "whatsapp",
+    "bot",
+    "rag",
+    "groq",
+    "ai"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dotenv": "^17.0.0",
+    "express": "^4.18.2",
+    "groq-sdk": "^0.5.0",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.25.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
