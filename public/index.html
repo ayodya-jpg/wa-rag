@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Adidas Store Assistant</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      background: #080808;
+      color: #ffffff;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.9);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .logo-bars {
+      display: flex;
+      align-items: end;
+      gap: 4px;
+    }
+
+    .logo-bars span {
+      display: block;
+      width: 9px;
+      background: #fff;
+      transform: skew(-20deg);
+      border-radius: 2px;
+    }
+
+    .logo-bars span:nth-child(1) { height: 14px; }
+    .logo-bars span:nth-child(2) { height: 22px; }
+    .logo-bars span:nth-child(3) { height: 30px; }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .nav-actions a {
+      font-size: 14px;
+      color: #d6d6d6;
+    }
+
+    .btn {
+      display: inline-block;
+      border: none;
+      padding: 13px 18px;
+      border-radius: 14px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.25s;
+      text-align: center;
+    }
+
+    .btn-white {
+      background: #fff;
+      color: #111;
+    }
+
+    .btn-dark {
+      background: #1d1d1d;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.14);
+    }
+
+    .btn-wa {
+      background: #25d366;
+      color: #fff;
+      box-shadow: 0 12px 28px rgba(37, 211, 102, 0.25);
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      opacity: 0.95;
+    }
+
+    .hero {
+      padding: 70px 0 36px;
+      background:
+        radial-gradient(circle at top right, rgba(255,255,255,0.12), transparent 28%),
+        linear-gradient(135deg, #080808, #151515);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .hero-box, .side-box, .card, .chat-card, .contact-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 26px;
+      box-shadow: 0 22px 55px rgba(0,0,0,0.35);
+    }
+
+    .hero-box {
+      padding: 34px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      background: rgba(255,255,255,0.09);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 66px);
+      line-height: 1.05;
+      margin-bottom: 18px;
+      letter-spacing: -1.2px;
+    }
+
+    .hero p {
+      color: #c9c9c9;
+      font-size: 17px;
+      max-width: 720px;
+      margin-bottom: 26px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 18px;
+      border-radius: 18px;
+    }
+
+    .stat h3 {
+      font-size: 26px;
+      margin-bottom: 4px;
+    }
+
+    .stat span {
+      color: #bcbcbc;
+      font-size: 13px;
+    }
+
+    .side-box {
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .side-item {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 17px;
+      border-radius: 18px;
+    }
+
+    .side-item h3 {
+      margin-bottom: 5px;
+    }
+
+    .side-item p {
+      color: #c9c9c9;
+      font-size: 14px;
+    }
+
+    section {
+      padding: 38px 0;
+    }
+
+    .section-title {
+      margin-bottom: 22px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #bfbfbf;
+      max-width: 720px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 24px;
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    .number {
+      display: inline-flex;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      color: #111;
+      font-weight: 900;
+      border-radius: 13px;
+      margin-bottom: 14px;
+    }
+
+    .card h3 {
+      font-size: 21px;
+      margin-bottom: 9px;
+    }
+
+    .card p {
+      color: #c5c5c5;
+      font-size: 14px;
+      margin-bottom: 16px;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .chip {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #fff;
+      padding: 10px 13px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: 0.2s;
+      font-size: 13px;
+    }
+
+    .chip:hover {
+      background: rgba(255,255,255,0.16);
+    }
+
+    .chat-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .chat-info, .chat-card {
+      padding: 26px;
+    }
+
+    .chat-info {
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 26px;
+    }
+
+    .chat-info ul {
+      color: #c9c9c9;
+      margin-left: 18px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .chat-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .status {
+      background: rgba(37,211,102,0.16);
+      border: 1px solid rgba(37,211,102,0.3);
+      color: #86f3ae;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .chat-window {
+      height: 420px;
+      overflow-y: auto;
+      background: rgba(0,0,0,0.28);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .message {
+      max-width: 88%;
+      padding: 13px 15px;
+      border-radius: 18px;
+      white-space: pre-line;
+      font-size: 14px;
+    }
+
+    .bot {
+      align-self: flex-start;
+      background: #fff;
+      color: #111;
+      border-bottom-left-radius: 6px;
+    }
+
+    .user {
+      align-self: flex-end;
+      background: #2b2b2b;
+      color: #fff;
+      border-bottom-right-radius: 6px;
+    }
+
+    .chat-input-area {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .chat-input-area input {
+      flex: 1;
+      padding: 14px;
+      border-radius: 14px;
+      outline: none;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+    }
+
+    .product-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .product-item {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 14px;
+      border-radius: 16px;
+    }
+
+    .product-item strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .product-item span {
+      display: block;
+      color: #c9c9c9;
+      font-size: 13px;
+    }
+
+    .contact-card {
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .contact-box {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 18px;
+    }
+
+    .contact-box h3 {
+      margin-bottom: 8px;
+    }
+
+    .contact-box p {
+      color: #c9c9c9;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .phone {
+      font-size: 22px;
+      font-weight: 900;
+      margin-bottom: 16px;
+    }
+
+    footer {
+      padding: 30px 0 90px;
+      color: #b7b7b7;
+      font-size: 14px;
+    }
+
+    .footer-line {
+      border-top: 1px solid rgba(255,255,255,0.12);
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .floating-wa {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 20;
+      background: #25d366;
+      color: #fff;
+      padding: 14px 18px;
+      border-radius: 999px;
+      font-weight: 900;
+      box-shadow: 0 12px 30px rgba(37,211,102,0.32);
+    }
+
+    @media (max-width: 960px) {
+      .hero-grid, .grid, .chat-layout, .contact-card {
+        grid-template-columns: 1fr;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .navbar {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .hero-box, .side-box, .chat-info, .chat-card, .contact-card, .card {
+        padding: 20px;
+      }
+
+      .chat-input-area {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .floating-wa {
+        left: 16px;
+        right: 16px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a
+    class="floating-wa"
+    href="https://wa.me/6281333249642?text=Halo%20saya%20ingin%20bertanya%20tentang%20produk%20Adidas"
+    target="_blank"
+  >
+    💬 Chat WhatsApp
+  </a>
+
+  <header>
+    <div class="container navbar">
+      <div class="brand">
+        <div class="logo-bars">
+          <span></span><span></span><span></span>
+        </div>
+        ADIDAS STORE
+      </div>
+
+      <div class="nav-actions">
+        <a href="#kategori">Kategori</a>
+        <a href="#chatbot">Chatbot</a>
+        <a href="#kontak">Kontak</a>
+        <a
+          class="btn btn-wa"
+          href="https://wa.me/6281333249642?text=Halo%20saya%20ingin%20bertanya%20tentang%20produk%20Adidas"
+          target="_blank"
+        >
+          Hubungi Admin
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-box">
+          <div class="badge">Official Store Assistant</div>
+          <h1>Adidas Product Finder</h1>
+          <p>
+            Cari kategori dan contoh produk Adidas dengan cepat melalui website ini.
+            Untuk detail produk, link produk, stok, dan rekomendasi lebih lanjut,
+            kamu bisa melanjutkan ke WhatsApp chatbot/admin.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#kategori" class="btn btn-white">Lihat Kategori</a>
+            <a href="#chatbot" class="btn btn-dark">Coba Chatbot</a>
+            <a
+              href="https://wa.me/6281333249642?text=Halo%20saya%20ingin%20bertanya%20tentang%20produk%20Adidas"
+              target="_blank"
+              class="btn btn-wa"
+            >
+              Lanjut ke WhatsApp
+            </a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <h3>153</h3>
+              <span>Produk Adidas pada dataset</span>
+            </div>
+            <div class="stat">
+              <h3>6</h3>
+              <span>Kategori utama</span>
+            </div>
+            <div class="stat">
+              <h3>WA</h3>
+              <span>Detail produk lanjut di WhatsApp</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="side-box">
+          <div class="side-item">
+            <h3>Website ini untuk apa?</h3>
+            <p>
+              Website ini membantu pengunjung melihat kategori apa saja yang tersedia,
+              contoh produk, dan cara bertanya ke chatbot.
+            </p>
+          </div>
+
+          <div class="side-item">
+            <h3>Detail produk bagaimana?</h3>
+            <p>
+              Untuk link produk, detail stok, dan konsultasi produk, pengguna diarahkan
+              ke WhatsApp contact person.
+            </p>
+          </div>
+
+          <div class="side-item">
+            <h3>Chatbot Web</h3>
+            <p>
+              Chatbot di website ini dibuat seperti simulasi WA: bisa memilih menu,
+              kategori, dan mencari nama produk secara sederhana.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kategori">
+      <div class="container">
+        <div class="section-title">
+          <h2>Kategori Adidas</h2>
+          <p>
+            Berikut kategori produk yang tersedia di dataset Adidas. Klik tombol pada kategori
+            untuk menanyakan kategori tersebut ke chatbot web.
+          </p>
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <div class="number">01</div>
+            <h3>Footwear</h3>
+            <p>Sepatu, sneakers, shoes, dan produk alas kaki Adidas.</p>
+            <div class="chips">
+              <button class="chip" onclick="quickAsk('footwear')">Tanya Footwear</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="number">02</div>
+            <h3>Mens Apparel</h3>
+            <p>Apparel pria seperti kaos, celana, jacket, dan produk sporty pria.</p>
+            <div class="chips">
+              <button class="chip" onclick="quickAsk('mens apparel')">Tanya Mens Apparel</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="number">03</div>
+            <h3>Womens Apparel</h3>
+            <p>Apparel wanita untuk kebutuhan casual, olahraga, dan daily outfit.</p>
+            <div class="chips">
+              <button class="chip" onclick="quickAsk('womens apparel')">Tanya Womens Apparel</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="number">04</div>
+            <h3>Basketball</h3>
+            <p>Produk kategori basket Adidas, baik apparel maupun produk olahraga.</p>
+            <div class="chips">
+              <button class="chip" onclick="quickAsk('basketball')">Tanya Basketball</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="number">05</div>
+            <h3>Football</h3>
+            <p>Produk football Adidas seperti jersey, apparel bola, dan produk terkait.</p>
+            <div class="chips">
+              <button class="chip" onclick="quickAsk('football')">Tanya Football</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="number">06</div>
+            <h3>World Cup</h3>
+            <p>Koleksi bertema World Cup dan produk football spesial Adidas.</p>
+            <div class="chips">
+              <button class="chip" onclick="quickAsk('world cup')">Tanya World Cup</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="chatbot">
+      <div class="container chat-layout">
+        <div class="chat-info">
+          <div class="section-title">
+            <h2>Chatbot Website</h2>
+            <p>
+              Chatbot di website ini dibuat mirip dengan alur WhatsApp. Bedanya,
+              website hanya menampilkan kategori, contoh produk, dan arahan.
+              Untuk detail/link produk, lanjut ke WhatsApp.
+            </p>
+          </div>
+
+          <ul>
+            <li>Ketik <strong>halo</strong> untuk membuka menu utama.</li>
+            <li>Ketik angka <strong>1–7</strong> untuk memilih menu.</li>
+            <li>Ketik <strong>0</strong> atau <strong>kembali</strong> untuk kembali.</li>
+            <li>Ketik kata panjang seperti <strong>saya mau sepatu Adidas putih</strong>.</li>
+            <li>Untuk link produk, klik tombol WhatsApp.</li>
+          </ul>
+
+          <div style="margin-top: 20px; display:flex; gap:12px; flex-wrap:wrap;">
+            <button class="btn btn-white" onclick="quickAsk('halo')">Mulai Chat</button>
+            <a
+              class="btn btn-wa"
+              href="https://wa.me/6281333249642?text=Halo%20saya%20ingin%20bertanya%20tentang%20produk%20Adidas"
+              target="_blank"
+            >
+              Lanjut ke WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div class="chat-card">
+          <div class="chat-head">
+            <div>
+              <h2>Adidas Store Assistant</h2>
+              <p style="color:#c9c9c9; font-size:14px;">Simulasi chatbot website</p>
+            </div>
+            <div class="status">● Online</div>
+          </div>
+
+          <div class="chat-window" id="chatWindow"></div>
+
+          <div class="chat-input-area">
+            <input
+              type="text"
+              id="chatInput"
+              placeholder="Contoh: saya mau sepatu Adidas putih"
+            />
+            <button class="btn btn-white" onclick="sendMessage()">Kirim</button>
+          </div>
+
+          <div class="chips">
+            <button class="chip" onclick="quickAsk('halo')">halo</button>
+            <button class="chip" onclick="quickAsk('1')">1 kategori</button>
+            <button class="chip" onclick="quickAsk('2')">2 footwear</button>
+            <button class="chip" onclick="quickAsk('3')">3 mens</button>
+            <button class="chip" onclick="quickAsk('4')">4 womens</button>
+            <button class="chip" onclick="quickAsk('5')">5 basketball</button>
+            <button class="chip" onclick="quickAsk('6')">6 football</button>
+            <button class="chip" onclick="quickAsk('0')">0 kembali</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontak">
+      <div class="container">
+        <div class="contact-card">
+          <div>
+            <div class="section-title">
+              <h2>Lanjut ke WhatsApp untuk Detail Produk</h2>
+              <p>
+                Website ini menampilkan kategori dan contoh produk. Untuk melihat link produk,
+                bertanya stok, harga lebih detail, atau rekomendasi personal, lanjutkan ke
+                WhatsApp chatbot/admin.
+              </p>
+            </div>
+          </div>
+
+          <div class="contact-box">
+            <h3>Contact Person</h3>
+            <p>Hubungi admin/chatbot Adidas Store melalui WhatsApp.</p>
+            <div class="phone">+62 813-3324-9642</div>
+            <a
+              class="btn btn-wa"
+              href="https://wa.me/6281333249642?text=Halo%20saya%20ingin%20bertanya%20tentang%20produk%20Adidas"
+              target="_blank"
+            >
+              Chat Sekarang
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-line">
+      <div>© 2026 Adidas Store Assistant.</div>
+      <div>Website + WhatsApp Chatbot Experience</div>
+    </div>
+  </footer>
+
+  <script>
+    const waLink = "https://wa.me/6281333249642?text=Halo%20saya%20ingin%20bertanya%20tentang%20produk%20Adidas";
+    const chatWindow = document.getElementById("chatWindow");
+    const chatInput = document.getElementById("chatInput");
+
+    let mode = "main-menu";
+    let lastProducts = [];
+
+    const products = {
+      footwear: [
+        "Adidas Running Shoes",
+        "Adidas Sneakers Lifestyle",
+        "Adidas Training Shoes",
+        "Adidas Originals Footwear",
+        "Adidas White Shoes"
+      ],
+      mens: [
+        "Adidas Mens T-Shirt",
+        "Adidas Mens Training Pants",
+        "Adidas Mens Jacket",
+        "Adidas Mens Shorts",
+        "Adidas Mens Sportswear"
+      ],
+      womens: [
+        "Adidas Womens T-Shirt",
+        "Adidas Womens Leggings",
+        "Adidas Womens Jacket",
+        "Adidas Womens Sportswear",
+        "Adidas Womens Apparel"
+      ],
+      basketball: [
+        "Adidas Basketball Shoes",
+        "Adidas Basketball Jersey",
+        "Adidas Basketball Shorts",
+        "Adidas Basketball Apparel",
+        "Adidas Performance Basketball"
+      ],
+      football: [
+        "Adidas Football Jersey",
+        "Adidas Football Shirt",
+        "Adidas World Cup Collection",
+        "Adidas Football Apparel",
+        "Adidas Football Training"
+      ],
+      worldcup: [
+        "Adidas World Cup Jersey",
+        "Adidas World Cup Shirt",
+        "Adidas World Cup Apparel",
+        "Adidas Football World Cup Collection",
+        "Adidas Special Edition World Cup"
+      ]
+    };
+
+    function addMessage(text, sender = "bot") {
+      const div = document.createElement("div");
+      div.className = `message ${sender}`;
+      div.textContent = text;
+      chatWindow.appendChild(div);
+      chatWindow.scrollTop = chatWindow.scrollHeight;
+    }
+
+    function showMainMenu() {
+      mode = "main-menu";
+      addMessage(
+        "Halo! Selamat datang di Adidas Store Assistant.\n\n" +
+        "Website ini dapat membantu kamu melihat kategori dan contoh produk Adidas.\n\n" +
+        "Menu Utama:\n" +
+        "1. Lihat semua kategori Adidas\n" +
+        "2. Cari sepatu Adidas / Footwear\n" +
+        "3. Cari Mens Apparel\n" +
+        "4. Cari Womens Apparel\n" +
+        "5. Cari produk Basketball\n" +
+        "6. Cari produk Football / World Cup\n" +
+        "7. Bantuan penggunaan\n\n" +
+        "Ketik angka pilihan.\n" +
+        "Untuk detail produk dan link produk, lanjutkan ke WhatsApp."
+      );
+    }
+
+    function showCategories() {
+      mode = "category-list";
+      addMessage(
+        "Kategori Adidas yang tersedia:\n\n" +
+        "1. Footwear\n" +
+        "2. Mens Apparel\n" +
+        "3. Womens Apparel\n" +
+        "4. Basketball\n" +
+        "5. Football\n" +
+        "6. World Cup\n\n" +
+        "Ketik nama kategori atau angka menu untuk melihat contoh produk.\n" +
+        "Ketik 0 atau kembali untuk menu utama."
+      );
+    }
+
+    function showProducts(title, list) {
+      mode = "product-list";
+      lastProducts = list;
+
+      let text = `${title}\n\n`;
+      text += "Contoh produk yang tersedia:\n\n";
+
+      list.forEach((product, index) => {
+        text += `${index + 1}. ${product}\n`;
+      });
+
+      text += "\nUntuk detail produk, harga terbaru, stok, dan link produk, lanjutkan ke WhatsApp.\n";
+      text += "Ketik 0 atau kembali untuk menu utama.";
+
+      addMessage(text);
+    }
+
+    function showHelp() {
+      mode = "help";
+      addMessage(
+        "Bantuan penggunaan:\n\n" +
+        "1. Ketik halo untuk membuka menu utama.\n" +
+        "2. Ketik angka 1-7 untuk memilih menu.\n" +
+        "3. Ketik kata bebas, contoh: saya mau sepatu Adidas putih.\n" +
+        "4. Website akan menampilkan kategori dan contoh produk.\n" +
+        "5. Untuk detail produk/link produk, klik tombol WhatsApp.\n" +
+        "6. Ketik 0 atau kembali untuk kembali ke menu utama."
+      );
+    }
+
+    function openWhatsAppPrompt() {
+      addMessage(
+        "Untuk detail produk dan link produk, silakan lanjut ke WhatsApp:\n\n" +
+        "+62 813-3324-9642\n\n" +
+        "Klik tombol WhatsApp di halaman ini untuk langsung terhubung."
+      );
+    }
+
+    function detectIntent(text) {
+      const t = text.toLowerCase();
+
+      if (t === "halo" || t === "hai" || t === "hi" || t === "hello" || t === "menu") {
+        return "menu";
+      }
+
+      if (t === "0" || t === "kembali" || t === "back" || t === "balik") {
+        return "back";
+      }
+
+      if (t === "1" || t.includes("kategori")) {
+        return "category";
+      }
+
+      if (
+        t === "2" ||
+        t.includes("footwear") ||
+        t.includes("footware") ||
+        t.includes("sepatu") ||
+        t.includes("shoes") ||
+        t.includes("sneakers") ||
+        t.includes("running")
+      ) {
+        return "footwear";
+      }
+
+      if (
+        t === "3" ||
+        t.includes("mens") ||
+        t.includes("men ") ||
+        t.includes("pria") ||
+        t.includes("kaos pria") ||
+        t.includes("celana pria")
+      ) {
+        return "mens";
+      }
+
+      if (
+        t === "4" ||
+        t.includes("womens") ||
+        t.includes("women") ||
+        t.includes("wanita") ||
+        t.includes("apparel wanita")
+      ) {
+        return "womens";
+      }
+
+      if (t === "5" || t.includes("basket") || t.includes("basketball")) {
+        return "basketball";
+      }
+
+      if (
+        t === "6" ||
+        t.includes("football") ||
+        t.includes("bola") ||
+        t.includes("jersey") ||
+        t.includes("world cup") ||
+        t.includes("worldcup")
+      ) {
+        return "football";
+      }
+
+      if (t === "7" || t.includes("bantuan") || t.includes("help")) {
+        return "help";
+      }
+
+      if (
+        t.includes("link") ||
+        t.includes("detail") ||
+        t.includes("stok") ||
+        t.includes("checkout") ||
+        t.includes("beli") ||
+        t.includes("wa") ||
+        t.includes("whatsapp") ||
+        t.includes("admin")
+      ) {
+        return "whatsapp";
+      }
+
+      return "unknown";
+    }
+
+    function respondToInput(input) {
+      const intent = detectIntent(input);
+
+      if (intent === "menu" || intent === "back") {
+        showMainMenu();
+        return;
+      }
+
+      if (intent === "category") {
+        showCategories();
+        return;
+      }
+
+      if (intent === "footwear") {
+        showProducts("Kategori: Footwear / Sepatu Adidas", products.footwear);
+        return;
+      }
+
+      if (intent === "mens") {
+        showProducts("Kategori: Mens Apparel", products.mens);
+        return;
+      }
+
+      if (intent === "womens") {
+        showProducts("Kategori: Womens Apparel", products.womens);
+        return;
+      }
+
+      if (intent === "basketball") {
+        showProducts("Kategori: Basketball", products.basketball);
+        return;
+      }
+
+      if (intent === "football") {
+        showProducts("Kategori: Football / World Cup", products.football.concat(products.worldcup));
+        return;
+      }
+
+      if (intent === "help") {
+        showHelp();
+        return;
+      }
+
+      if (intent === "whatsapp") {
+        openWhatsAppPrompt();
+        return;
+      }
+
+      addMessage(
+        "Maaf, saya belum memahami pencarian tersebut.\n\n" +
+        "Coba gunakan kata kunci seperti:\n" +
+        "- sepatu Adidas\n" +
+        "- mens apparel\n" +
+        "- womens apparel\n" +
+        "- basketball\n" +
+        "- football\n" +
+        "- world cup\n\n" +
+        "Untuk detail produk dan link produk, kamu bisa lanjut ke WhatsApp."
+      );
+    }
+
+    function sendMessage() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+
+      addMessage(text, "user");
+      chatInput.value = "";
+
+      setTimeout(() => respondToInput(text), 350);
+    }
+
+    function quickAsk(text) {
+      addMessage(text, "user");
+      setTimeout(() => respondToInput(text), 350);
+
+      const chatbotSection = document.getElementById("chatbot");
+      if (chatbotSection) {
+        chatbotSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+
+    chatInput.addEventListener("keypress", function(e) {
+      if (e.key === "Enter") {
+        sendMessage();
+      }
+    });
+
+    window.addEventListener("load", function() {
+      setTimeout(showMainMenu, 450);
+    });
+  </script>
+</body>
+</html>
